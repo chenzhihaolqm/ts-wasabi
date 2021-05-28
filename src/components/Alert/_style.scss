@@ -1,0 +1,54 @@
+.alert{
+  position: fixed;
+  top: $alert-top;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $alert-z-index;
+  padding: $alert-padding-y $alert-padding-x;
+  min-width: 300px;
+  min-height: 50px;
+  border: $alert-border-width solid transparent;
+  border-radius: 3px;
+  color: #fff;
+  .icon-close{
+    position: absolute;
+    right: $alert-close-right-offset;
+    top: $alert-padding-y;
+    font-size: 1rem;
+    cursor: pointer;
+    font-style: normal;
+  }
+  .title{
+    font-weight: bold;
+  }
+  .message{
+    font-size: .9rem;
+  }
+}
+
+.alert-default{
+  background-color: $primary;
+  border-color: $primary;
+}
+.alert-success{
+  background-color: $success;
+  border-color: $success;
+}
+.alert-warning{
+  background-color: $warning;
+  border-color: $warning;
+}
+.alert-danger{
+  background-color: $danger;
+  border-color: $danger;
+}
+
+
+// $primary:       $blue !default;
+// $secondary:     $gray-600 !default;
+// $success:       $green !default;
+// $info:          $cyan !default;
+// $warning:       $yellow !default;
+// $danger:        $red !default;
+// $light:         $gray-100 !default;
+// $dark:          $gray-800 !default;
