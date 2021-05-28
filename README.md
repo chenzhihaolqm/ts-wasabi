@@ -1,2 +1,2 @@
 # ts-wasabi
-用ts打造一套组件库
+用ts react17打造一套组件库
