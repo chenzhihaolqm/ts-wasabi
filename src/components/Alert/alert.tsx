@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames'
 
-export enum AlertType{
-  Success = 'success',
-  warnning = 'warnning',
-  Danger = 'danger',
-  Default = 'default',
-}
+export type AlertType = 'success' | 'warnning' | 'danger' | 'default'
 
 interface BaseAlterProps{
   title?: String,
@@ -17,7 +12,7 @@ interface BaseAlterProps{
 
 export type AlertProps = BaseAlterProps & React.HTMLAttributes<HTMLElement>
 
-const Alert: React.FC<AlertProps> = (props) => {
+export const Alert: React.FC<AlertProps> = (props) => {
   const { className, title, message, showClose, type } = props;
   const classes = classNames('alert', className, {
     [`alert-${type}`]: type,
@@ -37,7 +32,6 @@ const Alert: React.FC<AlertProps> = (props) => {
 Alert.defaultProps = {
   title: '',
   showClose: true,
-  type: AlertType.Default
+  type: 'default'
 }
-
-export default Alert
+export default Alert;

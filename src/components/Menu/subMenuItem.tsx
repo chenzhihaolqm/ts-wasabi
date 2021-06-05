@@ -3,6 +3,7 @@ import { MenuItemProps } from './menuItem'
 import { MenuContext } from './menu'
 import Icon from '../Icon/icon'
 import classNames from 'classnames'
+import Transition from '../Transition/transition'
 
 interface ISubMenuItem{
   title: String,
@@ -11,7 +12,7 @@ interface ISubMenuItem{
   style?: React.CSSProperties
 }
 
-const SubMenuItem: React.FC<ISubMenuItem> = (props) => {
+export const SubMenuItem: React.FC<ISubMenuItem> = (props) => {
   const { children, index, title, className, style } = props;
   const context = useContext(MenuContext);
   const [menuOpen, toggleMenuOpen] = useState(false);
@@ -30,7 +31,15 @@ const SubMenuItem: React.FC<ISubMenuItem> = (props) => {
       }
     })
     let ulClasses = classNames('submenu-ul');
-    return (<ul className={ulClasses}>{template}</ul>);
+
+    return (<Transition
+      in={menuOpen}
+      timeout={3000}
+      animation="zoom-in-left"
+    >
+     <ul className={ulClasses}>{template}</ul>
+    </Transition>)
+    // return (<ul className={ulClasses}>{template}</ul>);
   }
   
   const handleClickTitle = (e: React.MouseEvent) => {

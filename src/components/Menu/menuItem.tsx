@@ -9,7 +9,7 @@ export interface MenuItemProps{
   disabled?: Boolean
 }
 
-const MenuItem: React.FC<MenuItemProps> = (props) => {
+export const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { index, className, style, disabled, children } = props;
   const context = useContext(MenuContext);
   const classes = classNames('menu-item', className, {
@@ -18,7 +18,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
   });
   const handleClick = () => {
     if(context.onSelect && !disabled){
-      context.onSelect(index as String)
+      context.onSelect(index as string)
     }
   }
   return (<li className={classes} style={style} onClick={ handleClick }>
@@ -26,8 +26,8 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
   </li>);
 }
 
-MenuItem.defaultProps = {
-  index: '0'
-}
+// MenuItem.defaultProps = {
+//   index: '0'
+// }
 
 export default MenuItem;

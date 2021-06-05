@@ -1,14 +1,16 @@
-import React, { createContext, useState } from 'react'
+import React, { FC, createContext, useState } from 'react'
 import { MenuItemProps } from './menuItem'
 import classNames from 'classnames'
 
 type menuMode = 'horizontal' | 'vertical'
 type onSelectCallback = (selectedIndex: String) => void
 export interface MenuProps{
+  /**设置 横向 or 纵向 */
   mode?: menuMode,
   defaultIndex?: String,
   className?: String,
   style?: React.CSSProperties,
+  /**选中回调 onSelectCallback: (selectedIndex: String) => void */
   onSelect?: onSelectCallback
 }
 interface IMenuContext{
@@ -17,7 +19,7 @@ interface IMenuContext{
   onSelect?: onSelectCallback
 }
 export const MenuContext = createContext<IMenuContext>({index: '0', mode: 'horizontal'});
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: FC<MenuProps> = (props) => {
   const { mode, defaultIndex, className, style, children, onSelect } = props;
   const classes = classNames('menu', className, {
     'menu-vertical': mode === 'vertical'

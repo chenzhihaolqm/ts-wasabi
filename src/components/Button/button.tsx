@@ -1,31 +1,34 @@
-import React from 'react'
+import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react'
 import classNames from 'classnames'
-export enum ButtonSize{
-  Large = 'lg',
-  Small = 'sm'
-}
+export type ButtonSize = 'lg' | 'sm'
 
-export enum ButtonType{
-  Primary = 'primary',
-  Default = 'default',
-  Danger = 'danger',
-  Link = 'link'
-}
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
 interface BaseButtonProps{
   className?: string;
+  /**设置 Button 的禁用 */
   disabled?: boolean;
-  size?: string;
+  /**设置 Button 的尺寸 */
+  size?: ButtonSize;
+  /**设置 Button 的类型 */
   btnType?: ButtonType;
   children: React.ReactNode;
   href?: string;
 }
 
-type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-type NativeAnchorProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type NativeAnchorProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & NativeAnchorProps>
 
-const Button: React.FC<ButtonProps> = (props) => {
+/**
+ * 页面中最常用的的按钮元素，适合于完成特定的交互
+ * ### 引用方法
+ * 
+ * ~~~js
+ * import { Button } from 'ts-wasabi'
+ * ~~~
+ */
+export const Button: FC<ButtonProps> = (props) => {
   const {
     btnType,
     className,
@@ -38,10 +41,10 @@ const Button: React.FC<ButtonProps> = (props) => {
   const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    disabled: (btnType === ButtonType.Link) && disabled
+    disabled: (btnType === 'link') && disabled
   });
 
-  if(btnType === ButtonType.Link && href){
+  if(btnType === 'link' && href){
     return (
       <a {...restProps} className={classes} href={href}>
         {children}
@@ -59,7 +62,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  btnType: ButtonType.Default,
-  size: ButtonSize.Small
+  btnType: 'default',
+  size: 'sm'
 }
 export default Button;

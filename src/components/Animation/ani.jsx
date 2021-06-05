@@ -3,22 +3,28 @@ import { CSSTransition } from 'react-transition-group';
 
 
 const App = () => {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   return (
-    　　　　　　<div>
-    　　　　　　　　<CSSTransition
-    　　　　　　　　　　in={show}
-    　　　　　　　　　　timeout={1000}
-    　　　　　　　　　　classNames="fade"
-    　　　　　　　　　　unmountOnExit
-    　　　　　　　　　　appear={true}
-    　　　　　　　　>
-    　　　　　　　　　　<div>hello</div>
+    <div>
+               <div onClick={() => setShow(!show)}>hehe</div>
+               <div onClick={() => setShow(!show)}>hehe</div>
+               <CSSTransition
+     　　　　　　　　　　in={show}
+     　　　　　　　　　　timeout={300}
+     　　　　　　　　　　classNames="zoom-in-left"
+                       appear
+     　　　　　　　　　　unmountOnExit>
+    　　　　　　　　<div>
+                    <div>one one one</div>
+                    <div>one one one</div>
+                    <div>one one one</div>
+                    <div>one one one</div>
+                    <div>one one one</div>
+                    <div>one one one</div>
+                  </div>
+     　　　　　</CSSTransition>
+        </div>
                
-    　　　　　　　　</CSSTransition>
-    　　　　　　　
-    　　　　　　</div>
-               
-    　　　　)
+    　)
 }
 export default App;

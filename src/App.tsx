@@ -5,9 +5,11 @@ import Hello from './components/Hi'
 import LikeButton from './components/LikeButton'
 import MouseTracker from './components/MouseTracker'
 import WithLoader from './components/withLoader'
+import Transition from './components/Transition/transition'
 import useMousePostion from './hooks/useMousePosition'
 import useURLLoader from './hooks/useURLLoader'
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
+import Button from './components/Button/button'
+import { CSSTransition } from 'react-transition-group';
 
 interface IShowResult{
   message: string,
@@ -42,6 +44,7 @@ const DogShow: React.FC<{data: IShowResult}> = ({data}) => {
 
 function App() {
   const [refresh, setRefresh] = useState(1);
+  const [menuOpen, setOpen] = useState(true)
   const WrapperedDogShow = WithLoader(DogShow);
   const position = useMousePostion();
   const [data, loading] = useURLLoader('', [refresh]);
@@ -49,8 +52,8 @@ function App() {
   return (
     <div className="App">
       <Button onClick={()=>{alert(1)}}>点击</Button>
-      <Button size={ButtonSize.Large} btnType={ButtonType.Default}>submit</Button>
-      <Button btnType={ButtonType.Link} href="http://baidu.com" target="_blank">提交</Button>
+      <Button size='lg' btnType='default'>submit</Button>
+      <Button btnType='link' href="http://baidu.com" target="_blank">提交</Button>
       
       <ThemeContext.Provider value={themes.dark}>
         <header className="App-header">
@@ -64,6 +67,34 @@ function App() {
           {/* {loading ? '读取中' : showResult && showResult.message} */}
         </header>
       </ThemeContext.Provider>
+
+
+      <Button style={{marginLeft: '10px'}} onClick={()=>{setOpen(!menuOpen)}}>点击</Button>
+    <Transition
+      in={menuOpen}
+      timeout={3000}
+      animation="zoom-in-left"
+    >
+
+      <div>
+        <div>one one one</div>
+        <div>one one one</div>
+        <div>one one one</div>
+        <div>one one one</div>
+        <div>one one one</div>
+        <div>one one one</div>
+      </div>
+    </Transition>
+
+    <CSSTransition
+      in={menuOpen}
+      timeout={3000}
+      classNames="zoom-in-left"
+      appear
+      unmountOnExit
+    >
+      <Button size="lg">A large Button</Button>
+    </CSSTransition>
       
     </div>
   );
