@@ -1,0 +1,45 @@
+.upload-list{
+  .upload-list-item{
+    list-style: none;
+    padding: 2px;
+    .file-name{
+      margin-left: 6px;
+      margin-right: 6px;
+      vertical-align: 2px;
+    }
+    .file-status{
+      display: inline-block;
+    }
+    .file-action{
+      display: none;
+      cursor: pointer;
+    }
+  }
+  .upload-list-item:hover{
+    .file-status{
+      display: none;
+    }
+    .file-action{
+      display: inline-block;
+      width: 16px;
+      text-align: center;
+    }
+  }
+}
+
+.uploader-dragger{
+  background: #f8f9fa;
+  border: 1px dashed #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 20px;
+  width: 360px;
+  height: 180px;
+  text-align: center;
+  &:hover{
+    border-color: $primary;
+  }
+  &.is-dragover {
+    border-color: $primary;
+  }
+}

@@ -1,0 +1,178 @@
+input::-webkit-input-placeholder { /* WebKit browsers */
+  color: $input-placeholder-color;
+  }
+  input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $input-placeholder-color;
+  }
+  input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $input-placeholder-color;
+  }
+  input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: $input-placeholder-color;
+  }
+.wasabi-input-wrap{
+  position: relative;
+  display: inline-block;
+}
+.wasabi-input{
+  display: inline-flex;
+  position: relative;
+  .input{
+    @include input-size( $input-padding-y,  $input-padding-x,  $input-font-size,  $border-radius);
+    font-family: $input-font-family;
+    background: $input-bg;
+    border:  $input-border-width solid $input-border-color;
+    color: $input-color;
+    box-shadow: $input-box-shadow;
+    &:hover{
+      border-color: $input-hover-border-color;
+    }
+
+    &:focus{
+      border-color: $input-focus-border-color;
+      // box-shadow: $input-focus-box-shadow;
+    }
+  }
+  .icon-wrapper{
+    position: absolute;
+    right: 0.375rem;
+    top: 0.375rem;
+    color: $gray-600;
+    cursor: pointer;
+    &.prefix{
+     left: 0.375rem;
+     right: initial;
+    }
+  }
+  .prepend{
+    padding: $input-padding-y $input-append-padding-x;
+    background-color: #f5f7fa;
+    color: #909399;
+    border: $input-border-width solid $input-border-color;
+    border-right: none;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+  .append{
+    padding: $input-padding-y $input-append-padding-x;
+    background-color: #f5f7fa;
+    color: #909399;
+    border: $input-border-width solid $input-border-color;
+    border-left: none;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+}
+
+.wasabi-input.input-lg{
+  .input{
+    @include input-size( $input-padding-y-lg,  $input-padding-x-lg,  $input-font-size-lg,  $border-radius);
+  }
+  .icon-wrapper{
+    top: 0.8rem;
+  }
+  .prepend{
+    padding: $input-padding-y-lg $input-append-padding-x;
+  }
+  .append{
+    padding: $input-padding-y-lg $input-append-padding-x;
+  }
+}
+
+.wasabi-input.input-sm{
+  .input{
+    @include input-size( $input-padding-y-sm,  $input-padding-x-sm,  $input-font-size-sm,  $border-radius);
+  }
+  .icon-wrapper{
+    top: 0.2rem;
+  }
+  .prepend{
+    padding: $input-padding-y-sm $input-append-padding-x;
+  }
+  .append{
+    padding: $input-padding-y-sm $input-append-padding-x;
+  }
+}
+.wasabi-input.with-prefix-icon{
+  .input{
+    padding-left: 1.875rem;
+  }
+}
+.wasabi-input.with-suffix-icon{
+  .input{
+    padding-right: 1.875rem;
+  }
+}
+
+.wasabi-input.is-disabled{
+  .input{
+    background: $input-disabled-bg;
+    color: $gray-600;
+    cursor: not-allowed;
+  }
+}
+
+.wasabi-input + .wasabi-input{
+  margin-left: 10px;
+  vertical-align: bottom;
+}
+
+.suggestions{
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  padding: 0.6rem 0;
+  font-size: $input-suggection-font-size;
+  max-height: $input-suggection-height;
+  width: 100%;
+  overflow-y: auto;
+  border:  $input-border-width solid $input-border-color;
+  color: $input-color;
+  box-shadow: $input-box-shadow;
+  background-color: $white;
+  .item{
+    list-style: none;
+    padding: $input-padding-y $input-padding-x;
+    white-space:nowrap;/* 规定文本是否折行 */  
+    overflow: hidden;/* 规定超出内容宽度的元素隐藏 */
+    text-overflow: ellipsis;
+    cursor: pointer;
+    &:hover{
+      background-color: #f5f7fa;
+    }
+    &.is-hover{
+      background-color: #f5f7fa;
+    }
+  }
+}
+
+// $input-focus-bg:                        $input-bg !default;
+// $input-focus-border-color:              lighten($primary, 25%) !default;
+// $input-focus-width:                     .2rem !default;
+// $input-focus-color:                     $input-color !default;
+// $input-focus-shadow-color:              rgba($primary, .25) !default;
+// $input-focus-box-shadow:                0 0 0 $input-focus-width $input-focus-shadow-color !default;
+
+// $input-padding-y:                       $btn-padding-y !default;
+// $input-padding-x:                       $btn-padding-x !default;
+// $input-font-family:                     $btn-font-family !default;
+// $input-font-size:                       $btn-font-size !default;
+// $input-font-weight:                     $font-weight-base !default;
+// $input-line-height:                     $btn-line-height !default;
+
+// $input-padding-y-sm:                    $btn-padding-y-sm !default;
+// $input-padding-x-sm:                    $btn-padding-x-sm !default;
+// $input-font-size-sm:                    $btn-font-size-sm !default;
+
+// $input-padding-y-lg:                    $btn-padding-y-lg !default;
+// $input-padding-x-lg:                    $btn-padding-x-lg !default;
+// $input-font-size-lg:                    $btn-font-size-lg !default;
+
+// $input-bg:                              $white !default;
+// $input-disabled-bg:                     $gray-200 !default;
+// $input-disabled-border-color:           null !default;
+
+// $input-color:                           $gray-700 !default;
+// $input-border-color:                    $gray-400 !default;
+// $input-border-width:                    $border-width !default;
+// $input-box-shadow:                      $box-shadow-inset !default;

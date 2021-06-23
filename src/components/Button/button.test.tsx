@@ -13,8 +13,8 @@ const defaultProps = {
 }
 
 const testProps:ButtonProps = {
-  btnType:ButtonType.Primary,
-  size:ButtonSize.Small,
+  btnType: 'primary',
+  size: 'sm',
   className:'test',
   onClick:jest.fn()
 }
@@ -33,8 +33,8 @@ test('our second react test case', () => {
 test('our second react test case', () => {
 
   const testProps:ButtonProps = {
-    btnType:ButtonType.Primary,
-    size:ButtonSize.Large,
+    btnType: 'primary',
+    size: 'lg',
     disabled: true,
     onClick:jest.fn()
   }

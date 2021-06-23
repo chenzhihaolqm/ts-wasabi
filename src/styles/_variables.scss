@@ -267,7 +267,9 @@ $input-focus-color:                     $input-color !default;
 $input-focus-shadow-color:              rgba($primary, .25) !default;
 $input-focus-box-shadow:                0 0 0 $input-focus-width $input-focus-shadow-color !default;
 
-$input-placeholder-color:               $gray-600 !default;
+$input-hover-border-color:              $gray-500;
+
+$input-placeholder-color:               #c0c4cc !default;
 $input-plaintext-color:                 $body-color !default;
 
 $input-height-border:                   $input-border-width * 2 !default;
@@ -278,6 +280,12 @@ $input-transition:                      border-color .3s ease-in-out, box-shadow
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
+
+$input-append-padding-x:                1rem !default;
+
+$input-suggection-height:               30rem;
+$input-suggection-font-size:            0.875rem;
+
 
 // Progress bars
 
