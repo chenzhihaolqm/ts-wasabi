@@ -1,11 +1,11 @@
 import React, { FC, createContext, useState, FunctionComponentElement, ReactNode, cloneElement } from 'react'
-import { ITabItem } from './tabItem'
+import { TabItemProps } from './tabItem'
 import classNames from 'classnames'
 
 type onSelectCallback = (index: string) => void
 
 type TabsType = 'default' | 'card' | 'border-card'
-export interface ITabs{
+export interface TabsProps{
   type?: TabsType,
   defaultIndex?: string,
   className?: string,
@@ -21,10 +21,10 @@ interface ItabsContext{
 
 const renderTabs = function(children: ReactNode, activeIndex: string){
 
-  const headers:Array<FunctionComponentElement<ITabItem>> = [];
-  const conntents:Array<FunctionComponentElement<ITabItem>> = [];
+  const headers:Array<FunctionComponentElement<TabItemProps>> = [];
+  const conntents:Array<FunctionComponentElement<TabItemProps>> = [];
   React.Children.forEach(children, (child, index) => {
-    const childElement = child as (FunctionComponentElement<ITabItem>) ;
+    const childElement = child as (FunctionComponentElement<TabItemProps>) ;
   
     if(childElement.type.name === 'TabItem' ){
       headers.push(cloneElement(childElement, {
@@ -45,7 +45,7 @@ const renderTabs = function(children: ReactNode, activeIndex: string){
   }
 }
 export const TabsContext = createContext<ItabsContext>({ activeIndex: '0' });
-export const Tabs: FC<ITabs> = (props) => {
+export const Tabs: FC<TabsProps> = (props) => {
   const { defaultIndex, children, onSelect, className, type } = props;
   const classes = classNames('tabs', className, {
     'tabs-card': type === 'card',

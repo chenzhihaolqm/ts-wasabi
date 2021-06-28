@@ -36,6 +36,7 @@ export const Menu: FC<MenuProps> = (props) => {
   };
   const template = React.Children.map(children, (child, index) => {
     const childElement = child as React.FunctionComponentElement<MenuItemProps>;
+    debugger
     if(childElement.type.name === 'MenuItem' || childElement.type.name === 'SubMenuItem'){
       return React.cloneElement(childElement, {
         index: index.toString()

@@ -5,14 +5,14 @@ import Icon from '../Icon/icon'
 import classNames from 'classnames'
 import Transition from '../Transition/transition'
 
-interface ISubMenuItem{
+export interface SubMenuItemProps{
   title: String,
   index?: String,
   className?: String,
   style?: React.CSSProperties
 }
 
-export const SubMenuItem: React.FC<ISubMenuItem> = (props) => {
+export const SubMenuItem: React.FC<SubMenuItemProps> = (props) => {
   const { children, index, title, className, style } = props;
   const context = useContext(MenuContext);
   const [menuOpen, toggleMenuOpen] = useState(false);
@@ -70,4 +70,5 @@ export const SubMenuItem: React.FC<ISubMenuItem> = (props) => {
   </li>);
 }
 
+SubMenuItem.displayName = 'SubMenuItem'
 export default SubMenuItem;

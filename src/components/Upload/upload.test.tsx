@@ -3,7 +3,7 @@ import axios from 'axios'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, RenderResult, waitFor } from '@testing-library/react'
 // import Button, { ButtonSize, ButtonType, ButtonProps } from './button'
-import {Upload, UploadProps, UploadFile } from './index'
+import {Upload, UploadProps, UploadFile } from './upload'
 
 
 jest.mock('../Icon/icon', () => {

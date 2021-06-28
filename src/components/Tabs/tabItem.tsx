@@ -2,7 +2,7 @@ import React, { FC, useContext, useState } from 'react'
 import { TabsContext } from './tabs'
 import classNames from 'classnames'
 
-export interface ITabItem{
+export interface TabItemProps{
   label: string | React.ReactElement,
   index?: string,
   children: any,
@@ -11,13 +11,13 @@ export interface ITabItem{
   disabled?: boolean
 }
 
-export interface IResTabItem extends ITabItem{
+export interface IResTabItem extends TabItemProps{
   type: string,
   props?: any,
   key?: any
 }
 
-export const TabItem = (props: ITabItem) => {
+export const TabItem = (props: TabItemProps) => {
   const { className, style, disabled, label, index } = props;
   const context = useContext(TabsContext);
   const classes = classNames('tab-item', className, {

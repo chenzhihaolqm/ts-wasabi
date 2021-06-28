@@ -1,11 +1,15 @@
 {
   "name": "ts-wasabi",
   "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@storybook/addon-actions": "^6.3.0",
     "@storybook/react": "^6.2.9",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -17,20 +21,28 @@
     "@types/react-transition-group": "^4.4.1",
     "@types/storybook__addon-info": "^5.2.3",
     "axios": "^0.21.1",
+    "babel-loader": "^8.1.0",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "clean": "rimraf ./dist",
+    "build2": "react-scripts build",
+    "build": "npm run clean && npm run build-ts && npm run build-css",
     "test": "react-scripts test",
+    "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9001 -s public"
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "build-ts": "tsc -p tsconfig.build.json",
+    "storybook": "start-storybook -p 9001 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -52,9 +64,13 @@
   },
   "devDependencies": {
     "@storybook/addon-info": "^5.3.21",
+    "cross-env": "^7.0.3",
     "is-core-module": "^2.4.0",
+    "node-sass": "^6.0.1",
+    "react-docgen-typescript-loader": "^3.7.2",
     "request": "^2.88.2",
     "sass": "^1.34.0",
-    "true-case-path": "^2.2.1"
+    "true-case-path": "^2.2.1",
+    "webpack": "^4.44.2"
   }
 }

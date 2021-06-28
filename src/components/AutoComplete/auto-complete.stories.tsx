@@ -97,7 +97,6 @@ const AutocompleteWithFilter = () => {
           return response.json();
         })
         .then(function(res) {
-          debugger
           let filterData = (res.data as any[]).filter(item => {
             return item.value.includes(value)
           })

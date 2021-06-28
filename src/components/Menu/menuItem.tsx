@@ -29,5 +29,5 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
 // MenuItem.defaultProps = {
 //   index: '0'
 // }
-
+MenuItem.displayName = 'MenuItem'
 export default MenuItem;

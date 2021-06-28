@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState, ChangeEvent } from 'react';
 
-import { UploadFile } from './index'
+import { UploadFile } from './upload'
 import Progress from '../Progress/index'
 
 import Icon from '../Icon/icon'

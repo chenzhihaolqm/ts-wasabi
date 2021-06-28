@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import Button from '../Button/button'
 
-import Upload, { UploadFile } from './index'
+import Upload, { UploadFile } from './upload'
 
 const defaultFileList = [
   { uid: '123', name: 'hehe.png', size: 120, status: 'ready', percentage: 0 },
@@ -41,7 +41,7 @@ const defaultUpload = () => (
 const widthDataUpload = () => (
   <Upload style={{width: '60%'}} action="https://run.mocky.io/v3/b2f60ed1-5058-4d02-b2fa-8fe604ae24ef" multiple accept=".png"
   name="ha" data={{key: 1 }} headers={{h: 'h'}}  beforeUpload={filePromise} onProgress={(percentage, file) => {console.log(percentage)}}
-  onRemove={handleRemove} onError={(e, file) => {console.log(e)}} drag >
+  onRemove={handleRemove} onError={(e, file) => {console.log(e)}} >
     <Button btnType="primary" >上传</Button>
   </Upload>
 )
